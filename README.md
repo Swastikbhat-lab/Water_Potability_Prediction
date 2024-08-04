@@ -1,87 +1,57 @@
+# Drinking Water Potability Prediction
 
-
-#  Water Potability Prediction
-
-This project aims to predict the potability of drinking water using various water quality metrics. The dataset used includes multiple features that assess water quality, such as pH level, hardness, solids, chloramines, sulfate, conductivity, organic carbon, trihalomethanes, and turbidity.
+This project aims to predict the potability of drinking water using various machine learning models. The dataset contains various water quality parameters, and the goal is to classify the water as potable or not.
 
 ## Table of Contents
-
-- [Introduction](#introduction)
-- [Dataset](#dataset)
-- [Features](#features)
-- [Installation](#installation)
+- [Project Overview](#project-overview)
+- [Tech Stack](#tech-stack)
+- [AI Models](#ai-models)
+- [Data Preprocessing](#data-preprocessing)
+- [Model Training and Evaluation](#model-training-and-evaluation)
 - [Usage](#usage)
 - [Results](#results)
+- [Contributing](#contributing)
 
+## Project Overview
+The project utilizes machine learning models to classify water samples based on their potability. It involves data preprocessing, model selection, and evaluation. The project leverages H2O.ai's AutoML framework for model training and evaluation.
 
-## Introduction
+## Tech Stack
+- **Programming Language**: Python
+- **Libraries**: 
+  - `pandas`: Data manipulation and analysis
+  - `numpy`: Numerical computations
+  - `matplotlib` & `seaborn`: Data visualization
+  - `sklearn`: Machine learning utilities
+  - `H2O.ai`: AutoML for model selection and evaluation
 
-Ensuring the safety of drinking water is crucial for public health. This project uses machine learning techniques to classify water samples as potable or non-potable based on their characteristics. The goal is to provide an automated system that can aid in water quality monitoring and decision-making.
+## AI Models
+The project uses the H2O.ai AutoML framework to automatically train and tune a variety of machine learning models. The following models were considered:
+- **GLM** (Generalized Linear Model)
+- **GBM** (Gradient Boosting Machine)
+- **XGBoost** (Extreme Gradient Boosting)
+- **Random Forest**
+- **Deep Learning** models
 
-## Dataset
+The best-performing model, according to the AutoML leaderboard, was a Stacked Ensemble model, which combines multiple models for better performance.
 
-The dataset used in this project contains various water quality parameters:
-- pH value
-- Hardness
-- Solids
-- Chloramines
-- Sulfate
-- Conductivity
-- Organic carbon
-- Trihalomethanes
-- Turbidity
-- Portability (target variable)
+## Data Preprocessing
+The dataset is preprocessed by handling missing values, feature scaling, and encoding categorical variables. Feature engineering steps include:
+- Imputation of missing values
+- Scaling numerical features
+- Encoding categorical variables, if any
 
-## Features
-
-- **pH**: pH value of water (0 to 14).
-- **Hardness**: Capacity of water to precipitate soap in mg/L.
-- **Solids**: Total dissolved solids in ppm.
-- **Chloramines**: Amount of Chloramines in ppm.
-- **Sulfate**: Amount of Sulfates dissolved in mg/L.
-- **Conductivity**: Electrical conductivity of water in μS/cm.
-- **Organic carbon**: Amount of organic carbon in ppm.
-- **Trihalomethanes**: Concentration of trihalomethanes in μg/L.
-- **Turbidity**: Measure of light emittance in NTU.
-- **Potability**: Indicates if water is safe for human consumption (1: Potable, 0: Not potable).
-
-## Installation
-
-To run this project, you need to have Python installed on your system. It is recommended to use a virtual environment to manage dependencies. Follow the steps below to set up the project:
-
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/your-username/drinking-water-potability-prediction.git
-    cd drinking-water-potability-prediction
-    ```
-
-2. Create a virtual environment and activate it:
-    ```sh
-    python3 -m venv env
-    source env/bin/activate  # On Windows use `env\Scripts\activate`
-    ```
-
-3. Install the required packages:
-    ```sh
-    pip install -r requirements.txt
-    ```
+## Model Training and Evaluation
+The H2O.ai AutoML framework was used to train and evaluate multiple models. The process involves:
+- Splitting the dataset into training and testing sets
+- Training multiple models using AutoML
+- Evaluating models based on accuracy, AUC, and other metrics
+- Selecting the best model based on performance metrics
 
 ## Usage
+To use the model for predictions, follow these steps:
+1. Load the dataset and preprocess it as per the preprocessing steps mentioned.
+2. Use the trained model (`aml.leader`) to make predictions on new data.
 
-1. Ensure you have Jupyter Notebook installed. If not, you can install it using:
-    ```sh
-    pip install notebook
-    ```
-
-2. Open the Jupyter Notebook:
-    ```sh
-    jupyter notebook
-    ```
-
-3. Open the `Drinking_Water_Potability_Prediction.ipynb` file in Jupyter Notebook and run the cells to see the analysis and results.
-
-## Results
-
-The notebook includes data exploration, preprocessing, model training, and evaluation steps. Various machine learning models are used to predict water potability, and their performance is compared based on accuracy and other metrics.
-
-
+Example:
+```python
+y_pred = aml.leader.predict(df_test)
