@@ -12,7 +12,7 @@ This project aims to predict the potability of drinking water using various wate
 - [Installation](#installation)
 - [Usage](#usage)
 - [Results](#results)
-- [License](#license)
+
 
 ## Introduction
 
@@ -82,9 +82,6 @@ To run this project, you need to have Python installed on your system. It is rec
 
 ## Results
 
-The notebook includes steps for data exploration, preprocessing, model training, and evaluation. Various machine learning models are used to predict water potability, and their performance is compared based on accuracy and other metrics.
+The notebook includes data exploration, preprocessing, model training, and evaluation steps. Various machine learning models are used to predict water potability, and their performance is compared based on accuracy and other metrics.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
